@@ -1,0 +1,95 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Two Tables
+
+### Table A
+
+```{r}
+library(dplyr)
+library(magrittr)
+library(knitr)
+library(data.table)
+library(formattable)
+library(tidyr)
+
+library(kableExtra)
+consumer <- readRDS("/Users/Thiago/Downloads/complaints.rds")
+tbl1 <- consumer %>%
+  group_by(sub_product) %>%
+  summarise(n()) %>%
+  top_n(5)
+
+
+kbl(tbl1)
+
+
+
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Table B
+
+```{r}
+
+library(kableExtra)
+tbl <- consumer %>%
+  group_by(issue) %>%
+  summarise(n()) %>%
+  top_n(10) 
+
+
+
+kbl(tbl)
+ # kbl() %>%
+  #kable_styling()
+
+
+```
+##Two Visualizations
+
+### Chart A
+
+```{r}
+library(ggplot2)
+library(scales)
+library(stringr)
+ggplot(data=consumer, aes(x=company_response_to_consumer)) +
+geom_bar() +
+geom_text(stat='count', aes(label=..count..), vjust=-1) +
+scale_x_discrete(labels = function(x) str_wrap(x, width = 2)) +
+scale_y_continuous(labels = comma)
+
+#This chart represents the most common responses by the company receiving a complaint to the consumer, as it can be seen from this graph, a response closed with an explanation was by far the most common.
+
+```
+
+### Chart B
+
+```{r}
+library(ggplot2)
+library(scales)
+library(stringr)
+ggplot(data=consumer, aes(x=mm_yy_sent_to_company)) +
+geom_bar() +
+geom_text(stat='count', aes(label=..count..), vjust=-1) +
+scale_x_discrete(labels = function(x) str_wrap(x, width = 2)) +
+scale_y_continuous(labels = comma)
+
+#This chart represents the months in which complaints from customers were the most frequent, as it can be seen from the plot below, the month with the highest amount of complaints was December 2020.
+                   
+```                  
+                   
