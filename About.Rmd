@@ -1,0 +1,38 @@
+---
+title: "About"
+author: "Thiago Fontes"
+date: "5/6/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r consumer}
+
+#Table A: For this table, I've selected the top 5 sub_products with the highest amount of consumer complaints. By sub_products, the dataset means the categories of the companies which have received the most complaints. The category which had the most consumer complaints was credit reporting, with 253,946 complaints.
+
+#Table B: For this table, I've selected the top 10 most common issues complained by consumers. Even though the table is not in ascending order, it can be seen that the issue of incorrect information on your report was the most common, with 176,946 people who had this same issue.
+
+#Chart A: For this chart, I've plotted the most common company responses to customer complaints. As it can be seen in this plot, a response closed with an explanation was by far the most common, which is what I found interesting, as responses with monetary relief were at a smaller number than I had predicted.
+
+#Chart B: For this chart, I've selected the months in which complaints from customers were the most frequent. As it can be seen from the graph, the month with the largest amount of complaints was in December 2020. I've choose this variable because I was curious about which months have generated the most complaints, and if there was a reason for that.
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
